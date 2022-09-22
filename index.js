@@ -1,10 +1,18 @@
-const cors = require('cors');
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const app = express();
 const mysql = require('mysql');
 
 app.use(cors());
+app.use(cors({
+    origin: '*'
+}));
+app.all('*', function (req, res) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
+    res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
+   });
 // parse application/json
 app.use(bodyParser.json());
 
@@ -113,5 +121,5 @@ app.post('/api/auth/login', (req, res) => {
 
 //Server listening
 app.listen(3300, () => {
-    console.log('Server berjalan di port 3000...');
+    console.log('Server berjalan di port 3300...');
 });
