@@ -1,8 +1,10 @@
+const cors = require('cors');
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const mysql = require('mysql');
 
+app.use(cors());
 // parse application/json
 app.use(bodyParser.json());
 
@@ -92,7 +94,24 @@ app.put('/api/employee/:id', (req, res) => {
 //   });
 // });
 
+// login
+app.post('/api/auth/login', (req, res) => {
+    let data = {
+        username: req.body.username,
+        password: req.body.password,
+    };
+    let sql = "SELECT * FROM employee WHERE username=" + req.body.username + " and password=" + req.body.password;
+    let query = conn.query(sql, data, (err, results) => {
+        if (err) throw err;
+        res.send(JSON.stringify({
+            "status": 200,
+            "error": null,
+            "response": results
+        }));
+    });
+});
+
 //Server listening
-app.listen(3000, () => {
+app.listen(3300, () => {
     console.log('Server berjalan di port 3000...');
 });
