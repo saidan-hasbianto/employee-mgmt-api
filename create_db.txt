@@ -1,0 +1,17 @@
+1.CREATE DATABASE employee_mgmt_db;
+
+2.CREATE TABLE employee(
+id VARCHAR(36) PRIMARY KEY,
+username VARCHAR(200),
+firstName VARCHAR(25),
+lastName VARCHAR(25),
+email VARCHAR(50),
+birthDate VARCHAR(10),
+basicSalary INT(10),
+status_employee VARCHAR(25),
+group_employee VARCHAR(25),
+description_employee VARCHAR(100)
+)ENGINE=INNODB;
+
+3.INSERT INTO employee(id,username,first_name,last_name,email,birth_date,basic_salary,status_employee,group_employee,description_employee) VALUES
+('af3675ed-805f-4269-8c2f-60dc876f30f2','admin','super','user','super_user@tes.com','1987-01-01','4300000','active','','')
