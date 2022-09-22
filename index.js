@@ -32,6 +32,7 @@ conn.connect((err) => {
 
 //tampilkan semua data product
 app.get('/api/employee', (req, res) => {
+    console.log(req);
     let sql = "SELECT * FROM employee";
     let query = conn.query(sql, (err, results) => {
         if (err) throw err;
@@ -108,6 +109,7 @@ app.post('/api/auth/login', (req, res) => {
         username: req.body.username,
         password: req.body.password,
     };
+    console.log(req);
     let sql = "SELECT * FROM employee WHERE username=" + req.body.username + " and password=" + req.body.password;
     let query = conn.query(sql, data, (err, results) => {
         if (err) throw err;
