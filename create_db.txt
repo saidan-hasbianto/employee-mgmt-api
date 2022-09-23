@@ -3,11 +3,11 @@
 2.CREATE TABLE employee(
 id VARCHAR(36) PRIMARY KEY,
 username VARCHAR(200),
-firstName VARCHAR(25),
-lastName VARCHAR(25),
+first_name VARCHAR(25),
+last_name VARCHAR(25),
 email VARCHAR(50),
-birthDate VARCHAR(10),
-basicSalary INT(10),
+birth_date VARCHAR(10),
+basic_salary INT(10),
 status_employee VARCHAR(25),
 group_employee VARCHAR(25),
 description_employee VARCHAR(100)
