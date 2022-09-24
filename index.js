@@ -118,7 +118,8 @@ app.post('/api/auth/login', (req, res) => {
         res.send(JSON.stringify({
             "status": 200,
             "error": null,
-            "response": results
+            // "response": results
+            "response": "success"
         }));
     });
 });
