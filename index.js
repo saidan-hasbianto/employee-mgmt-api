@@ -4,7 +4,7 @@ const app = express();
 const mysql = require('mysql');;
 const cors = require('cors');
 
-// app.use(cors());
+app.use(cors());
 // app.use(cors({
 //     origin: '*'
 // }));
@@ -18,6 +18,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+
+
+//Server listening
+app.listen(1313, () => {
+    console.log('Server berjalan di port 1313...');
+});
+
 //create database connection
 const conn = mysql.createConnection({
     host: 'localhost',
@@ -48,7 +55,7 @@ app.get('/api/employee', (req, res) => {
 
 //tampilkan data employee berdasarkan id
 app.get('/api/employee/:id', (req, res) => {
-    let sql = "SELECT * FROM employee WHERE id= '" + req.params.id+"'";
+    let sql = "SELECT * FROM employee WHERE id= '" + req.params.id + "'";
     let query = conn.query(sql, (err, results) => {
         if (err) throw err;
         res.send(JSON.stringify({
@@ -111,7 +118,7 @@ app.post('/api/auth/login', (req, res) => {
         username: req.body.username,
         password: req.body.password,
     };
-    console.log("DISINI " + req.body.username);
+    console.log("DISINI " + req.body.username); //TODO belum berhasil login
     let sql = "SELECT * FROM employee WHERE username='" + req.body.username + "' and password= '" + req.body.password + "'";
     let query = conn.query(sql, data, (err, results) => {
         if (err) throw err;
@@ -122,9 +129,4 @@ app.post('/api/auth/login', (req, res) => {
             "response": "success"
         }));
     });
-});
-
-//Server listening
-app.listen(1313, () => {
-    console.log('Server berjalan di port 1313...');
 });
